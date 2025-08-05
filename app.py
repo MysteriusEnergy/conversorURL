@@ -27,6 +27,8 @@ def convertir_ruta():
     ruta = entrada.get()
     if ruta:
         ruta_convertida = ruta.replace("\\", "/")
+        if not ruta_convertida.startswith("/"):
+            ruta_convertida += "/"
         salida.delete(0, tk.END)
         salida.insert(0, ruta_convertida)
     else:
@@ -49,9 +51,11 @@ def copiar_ruta():
 
 #! Ventana principal
 ventana = tk.Tk()
+
 ventana.title("Conversor de rutas")
 ventana.config(bg="#000000")
-ventana.iconbitmap(resource_path("assets/icon.ico"))
+
+ventana.iconbitmap(resource_path("assets/icons/flechas.ico"))
 
 centrar_ventana_en_pantalla(ventana, 500, 205)
 
